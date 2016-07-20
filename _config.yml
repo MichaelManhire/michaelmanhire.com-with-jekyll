@@ -1,6 +1,5 @@
 # Site
-#url: http://michaelmanhire.com
-url: http://localhost:4000
+url: http://michaelmanhire.com
 
 exclude: ["node_modules", "gulpfile.js", "package.json"]
 
