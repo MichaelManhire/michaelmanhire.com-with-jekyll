@@ -2,8 +2,12 @@
 Options -Indexes
 
 # Redirect www to non-wwww
+RewriteEngine On
 RewriteCond %{HTTP_HOST}  ^www.michaelmanhire.com [NC]
 RewriteRule ^(.*) http://michaelmanhire.com/$1 [L,R=301]
+
+# Remove .html extension from files
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
 # Enable gzip compression and leverage browser caching
 #--Uses mod_deflate for sending compressed requests--#
