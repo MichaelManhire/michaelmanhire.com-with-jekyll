@@ -1,0 +1,642 @@
+///////// Variables //////////////////////////////
+//////////////////////////////////////////////////
+
+$background-color: #f2f1ef;
+$desktop: new-breakpoint(min-width rem(769));
+$link-color: #1f3a93;
+
+///////// Layout /////////////////////////////////
+//////////////////////////////////////////////////
+
+.container {
+	@include outer-container(rem(2496px));
+}
+
+.full-width {
+	@include span-columns(12);
+}
+
+.shrink-for-desktop {
+	@include span-columns(10);
+	@include shift(1);
+
+	@include media($desktop) {
+		@include span-columns(8);
+		@include shift(2);
+	}
+}
+
+.header,
+.hero,
+.footer {
+	@extend .full-width;
+}
+
+.navigation-list,
+.projects,
+.blog,
+.about,
+.contact,
+.interior {
+	@extend .shrink-for-desktop;
+}
+
+///////// Extenders //////////////////////////////
+//////////////////////////////////////////////////
+
+.flexbox {
+	@include display(flex);
+	@include justify-content(space-around);
+	@include align-items(center);
+}
+
+///////// Helpers ////////////////////////////////
+//////////////////////////////////////////////////
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+abbr[title] {
+	border-bottom: 1px dotted #777;
+	text-decoration: none;
+	cursor: help;
+}
+
+p code {
+	padding: rem(3px) rem(6px);
+	background: #fff;
+	border-radius: 3px;
+}
+
+.reset-button-style {
+	@include appearance(none);
+	padding: 0;
+	background: none;
+	border: 0;
+}
+
+.reset-link-style {
+	color: inherit;
+	text-decoration: none;
+}
+
+.reset-list-style {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.sr-only {
+	// http://webaim.org/techniques/css/invisiblecontent/#absolutepositioning
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+///////// Header /////////////////////////////////
+//////////////////////////////////////////////////
+
+.header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	padding: .75rem 0;
+	background: $background-color;
+	box-shadow: 0px 2px 10px #707070;
+	color: #000;
+	font-family: "Open Sans", sans-serif;
+	text-align: center;
+}
+
+.navigation-list {
+	@extend .reset-list-style;
+	@extend .flexbox;
+
+	a {
+		@extend .reset-link-style;
+		color: inherit;
+		text-decoration: none;
+
+		&:hover,
+		&:focus {
+			color: $link-color;
+		}
+	}
+}
+
+///////// BrowseHappy ////////////////////////////
+//////////////////////////////////////////////////
+
+.browserupgrade {
+	z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	color: #000;
+	text-align: center;
+
+	p {
+		position: relative;
+		top: 50%;
+	}
+}
+
+///////// Animations /////////////////////////////
+//////////////////////////////////////////////////
+
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+
+Copyright (c) 2015 Daniel Eden
+*/
+.animated {
+-webkit-animation-duration: 1s;
+animation-duration: 1s;
+-webkit-animation-fill-mode: both;
+animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+0% {
+opacity: 0; }
+100% {
+opacity: 1; } }
+@keyframes fadeIn {
+0% {
+opacity: 0; }
+100% {
+opacity: 1; } }
+.fadeIn {
+-webkit-animation-name: fadeIn;
+animation-name: fadeIn; }
+
+@-webkit-keyframes fadeInDown {
+0% {
+opacity: 0;
+-webkit-transform: translate3d(0, -100%, 0);
+transform: translate3d(0, -100%, 0); }
+100% {
+opacity: 1;
+-webkit-transform: none;
+transform: none; } }
+@keyframes fadeInDown {
+0% {
+opacity: 0;
+-webkit-transform: translate3d(0, -100%, 0);
+transform: translate3d(0, -100%, 0); }
+100% {
+opacity: 1;
+-webkit-transform: none;
+transform: none; } }
+.fadeInDown {
+-webkit-animation-name: fadeInDown;
+animation-name: fadeInDown; }
+
+@-webkit-keyframes fadeInUp {
+0% {
+opacity: 0;
+-webkit-transform: translate3d(0, 100%, 0);
+transform: translate3d(0, 100%, 0); }
+100% {
+opacity: 1;
+-webkit-transform: none;
+transform: none; } }
+@keyframes fadeInUp {
+0% {
+opacity: 0;
+-webkit-transform: translate3d(0, 100%, 0);
+transform: translate3d(0, 100%, 0); }
+100% {
+opacity: 1;
+-webkit-transform: none;
+transform: none; } }
+.fadeInUp {
+-webkit-animation-name: fadeInUp;
+animation-name: fadeInUp; }
+
+/* Custom Styles */
+.introduction .heading,
+.introduction p {
+	@include animation-delay(.5s);
+}
+
+///////// Underlined Headings ////////////////////
+//////////////////////////////////////////////////
+
+.space-above {
+	position: relative;
+	padding: 5rem 0;
+}
+
+.section-heading {
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 300;
+}
+
+.underlined {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	margin: 0;
+	padding: 1rem 0;
+	text-align: center;
+
+	&::after {
+		content: '';
+		position: relative;
+		top: rem(10px);
+		display: block;
+		height: 1px;
+		width: 85%;
+		max-width: rem(600px);
+		margin: 0 auto;
+		background-color: #000;
+	}
+}
+
+.projects,
+.about,
+.blog,
+.contact {
+	@extend .space-above;
+}
+
+.projects h2,
+.about h2,
+.blog h2:not(.post-title),
+.contact h2 {
+	@extend .underlined;
+}
+
+///////// Document ///////////////////////////////
+//////////////////////////////////////////////////
+
+body {
+	background: $background-color;
+}
+
+.paragraph {
+	max-width: rem(550px);
+	margin: 0 auto 1rem;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+main section:not(.hero) p {
+	@extend .paragraph;
+}
+
+main a:not(.button) {
+	@extend .reset-link-style;
+	color: $link-color;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
+}
+
+.hero {
+	height: 100vh;
+	background: url("../img/hero-small.jpg") no-repeat 85%;
+	background-size: cover;
+
+	@media screen and (min-width: rem(451px)) {
+		background-image: url("../img/hero-medium.jpg");
+	}
+
+	@media screen and (min-width: rem(769px)) {
+		background-image: url("../img/hero-large.jpg");
+		background-position: 100% 0;
+	}
+
+	@media screen and (min-width: rem(1921px)) {
+		background-image: url("../img/hero-extra-large.jpg");
+	}
+
+	&.smaller {
+		height: 50vh;
+
+		.introduction {
+			top: 20%;
+			padding: 2rem 1rem;
+		}
+	}
+}
+
+.introduction {
+	position: absolute;
+	top: 25%;
+	width: 100%;
+	padding: 1rem;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 300;
+	text-align: center;
+
+	.heading,
+	h1 {
+		display: inline-block;
+		margin: 0;
+		font-size: 1.7rem;
+		font-weight: 300;
+	}
+
+	p {
+		margin: 1rem 0 0;
+		font-size: 1.2rem;
+	}
+}
+
+.featured-project {
+	margin: 0 0 1rem;
+	text-align: center;
+
+	figcaption {
+		@extend .paragraph;
+		margin-top: .5rem;
+		text-align: left;
+	}
+}
+
+.button-group {
+	text-align: center;
+}
+
+.button {
+	// http://codepen.io/chrisdothtml/pen/waKBdM/ (with my own modifications)
+	@extend .reset-link-style;
+	display: inline-block;
+	margin: .5rem;
+	padding: 0 1rem;
+	background-color: transparent;
+	border: 1px solid $link-color;
+	border-radius: 3px;
+	font-family: "Open Sans", sans-serif;
+	color: $link-color;
+	text-decoration: none;
+	line-height: 2.25;
+
+	@media screen and (max-width: rem(768px)) {
+		&:hover,
+		&:focus {
+			color: #fff;
+			background-color: $link-color;
+		}
+	}
+
+	@media screen and (min-width: rem(769px)) {
+		position: relative;
+		overflow: hidden;
+		@include transition-property(all);
+		@include transition-duration(.3s);
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			z-index: -1;
+			width: 0;
+			height: 100%;
+			background-color: $link-color;
+			opacity: 0;
+			@include transition-property(all);
+			@include transition-duration(.3s);
+		}
+
+		&:before {
+			left: 50%;
+		}
+
+		&:after {
+			right: 50%;
+		}
+
+		&:hover,
+		&:focus {
+			color: #fff;
+
+			&:before,
+			&:after {
+				width: 50%;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.list-of-posts {
+	@extend .reset-list-style;
+	max-width: rem(550px);
+	margin: 0 auto;
+
+	li:not(:last-child) {
+		margin: 0 0 3.5rem;
+	}
+
+	li:last-child p {
+		margin-bottom: 0;
+	}
+
+	.post-title {
+		margin: 0 0 .2rem;
+		font-weight: normal;
+	}
+
+	small {
+		@extend .paragraph;
+		display: inline-block;
+		margin: 0 0 .7rem;
+		font-size: .9rem;
+	}
+}
+
+.blog-button {
+	margin-top: 1.5rem;
+	padding: 0 3rem;
+	line-height: 3.25;
+}
+
+.about-image {
+	display: block;
+	max-width: 100px;
+	margin: 0 auto 1rem;
+	border-radius: 50%;
+}
+
+.form {
+	max-width: rem(550px);
+	margin: 0 auto;
+
+	label {
+		@extend .sr-only;
+	}
+
+	input,
+	textarea {
+		width: 100%;
+		margin: 0 0 1rem;
+		padding: 1rem .5rem;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		font-family: "Open Sans", sans-serif;
+
+		@include placeholder {
+			color: #aaa;
+			opacity: 1;
+		}
+	}
+
+	textarea {
+		height: rem(150px);
+	}
+
+	button {
+		@extend .button;
+		float: right;
+		cursor: pointer;
+	}
+}
+
+.social-icons {
+	@extend .reset-list-style;
+	@extend .flexbox;
+	text-align: center;
+
+	li {
+		display: block;
+		width: 33.3333%;
+	}
+
+	a {
+		@extend .reset-link-style;
+		display: block;
+		padding: .5rem 0;
+		font-size: 2rem;
+		opacity: .6;
+		transition: .3s;
+
+		&.twitter {
+			background-color: #55ACEE;
+			color: #fff;
+		}
+
+		&.github {
+			background-color: #d3d3d3;
+			color: #171516;
+		}
+
+		&.linkedin {
+			background-color: #0077B5;
+			color: #fff;
+		}
+
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+	}
+}
+
+///////// Blog Page //////////////////////////////
+//////////////////////////////////////////////////
+
+main section.interior {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	font-family: "Open Sans", sans-serif;
+
+	.list-of-posts,
+	small,
+	p {
+		max-width: none;
+	}
+}
+
+///////// Syntax Highlighting ////////////////////
+//////////////////////////////////////////////////
+
+.highlight {
+	display: inline-block;
+	margin-top: 0;
+	margin-right: 0;
+	margin-left: 0;
+	padding: .25rem 2rem;
+	border-radius: 3px;
+	background-color: #fff;
+}
+
+.c     { color: #998; font-style: italic } // Comment
+.err   { color: #a61717; background-color: #e3d2d2 } // Error
+.k     { font-weight: bold } // Keyword
+.o     { font-weight: bold } // Operator
+.cm    { color: #998; font-style: italic } // Comment.Multiline
+.cp    { color: #999; font-weight: bold } // Comment.Preproc
+.c1    { color: #998; font-style: italic } // Comment.Single
+.cs    { color: #999; font-weight: bold; font-style: italic } // Comment.Special
+.gd    { color: #000; background-color: #fdd } // Generic.Deleted
+.gd .x { color: #000; background-color: #faa } // Generic.Deleted.Specific
+.ge    { font-style: italic } // Generic.Emph
+.gr    { color: #a00 } // Generic.Error
+.gh    { color: #999 } // Generic.Heading
+.gi    { color: #000; background-color: #dfd } // Generic.Inserted
+.gi .x { color: #000; background-color: #afa } // Generic.Inserted.Specific
+.go    { color: #888 } // Generic.Output
+.gp    { color: #555 } // Generic.Prompt
+.gs    { font-weight: bold } // Generic.Strong
+.gu    { color: #aaa } // Generic.Subheading
+.gt    { color: #a00 } // Generic.Traceback
+.kc    { font-weight: bold } // Keyword.Constant
+.kd    { font-weight: bold } // Keyword.Declaration
+.kp    { font-weight: bold } // Keyword.Pseudo
+.kr    { font-weight: bold } // Keyword.Reserved
+.kt    { color: #458; font-weight: bold } // Keyword.Type
+.m     { color: #099 } // Literal.Number
+.s     { color: #d14 } // Literal.String
+.na    { color: #008080 } // Name.Attribute
+.nb    { color: #0086B3 } // Name.Builtin
+.nc    { color: #458; font-weight: bold } // Name.Class
+.no    { color: #008080 } // Name.Constant
+.ni    { color: #800080 } // Name.Entity
+.ne    { color: #900; font-weight: bold } // Name.Exception
+.nf    { color: #900; font-weight: bold } // Name.Function
+.nn    { color: #555 } // Name.Namespace
+.nt    { color: #000080 } // Name.Tag
+.nv    { color: #008080 } // Name.Variable
+.ow    { font-weight: bold } // Operator.Word
+.w     { color: #bbb } // Text.Whitespace
+.mf    { color: #099 } // Literal.Number.Float
+.mh    { color: #099 } // Literal.Number.Hex
+.mi    { color: #099 } // Literal.Number.Integer
+.mo    { color: #099 } // Literal.Number.Oct
+.sb    { color: #d14 } // Literal.String.Backtick
+.sc    { color: #d14 } // Literal.String.Char
+.sd    { color: #d14 } // Literal.String.Doc
+.s2    { color: #d14 } // Literal.String.Double
+.se    { color: #d14 } // Literal.String.Escape
+.sh    { color: #d14 } // Literal.String.Heredoc
+.si    { color: #d14 } // Literal.String.Interpol
+.sx    { color: #d14 } // Literal.String.Other
+.sr    { color: #009926 } // Literal.String.Regex
+.s1    { color: #d14 } // Literal.String.Single
+.ss    { color: #990073 } // Literal.String.Symbol
+.bp    { color: #999 } // Name.Builtin.Pseudo
+.vc    { color: #008080 } // Name.Variable.Class
+.vg    { color: #008080 } // Name.Variable.Global
+.vi    { color: #008080 } // Name.Variable.Instance
+.il    { color: #099 } // Literal.Number.Integer.Long
