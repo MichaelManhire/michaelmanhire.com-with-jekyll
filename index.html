@@ -50,11 +50,11 @@ https://github.com/MichaelManhire/michaelmanhire.com-with-jekyll -->
 		<p>If you&rsquo;d like to contact me, please submit the form below and I&rsquo;ll be in touch with you shortly.</p>
 		<form action="php/contact.php" method="post" class="form" id="form">
 			<label for="name">Name</label>
-			<input type="text" id="name" placeholder="Name">
+			<input type="text" id="name" name="name" placeholder="Name">
 			<label for="email">Email (required)</label>
-			<input type="email" id="email" placeholder="Email *" required>
+			<input type="email" id="email" name="email" placeholder="Email *" required>
 			<label for="message">Message (required)</label>
-			<textarea id="message" placeholder="Message *" required></textarea>
+			<textarea id="message" name="message" placeholder="Message *" required></textarea>
 			<button type="submit">Send</button>
 		</form>
 	</section>
