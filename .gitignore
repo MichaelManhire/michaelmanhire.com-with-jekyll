@@ -45,3 +45,7 @@ _site
 # NPM #
 #######
 node_modules
+
+# Minified Files #
+##################
+*.min.*
