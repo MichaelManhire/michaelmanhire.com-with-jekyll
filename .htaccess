@@ -1,6 +1,9 @@
 # Prevent directory browsing
 Options -Indexes
 
+# Map requests without file extensions (like .html) to the proper files
+Options +MultiViews
+
 # Redirect www to non-www
 RewriteEngine On
 RewriteCond %{HTTP_HOST}  ^www.michaelmanhire.com [NC]
