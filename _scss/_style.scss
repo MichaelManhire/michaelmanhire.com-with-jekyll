@@ -648,3 +648,27 @@ main section.interior {
 .vg    { color: #008080 } // Name.Variable.Global
 .vi    { color: #008080 } // Name.Variable.Instance
 .il    { color: #099 } // Literal.Number.Integer.Long
+
+///////// Outdated Browsers //////////////////////
+//////////////////////////////////////////////////
+
+.no-flexbox {
+	.navigation-list {
+		font-size: 0;
+
+		li {
+			display: inline-block;
+			width: 25%;
+			font-size: 1rem;
+		}
+	}
+
+	.social-icons {
+		font-size: 0;
+
+		li {
+			display: inline-block;
+			font-size: 2rem;
+		}
+	}
+}
