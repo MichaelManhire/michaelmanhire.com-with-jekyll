@@ -484,7 +484,9 @@ main a:not(.button) {
 	margin: 0 auto;
 
 	label {
-		@extend .sr-only;
+		@extend .paragraph;
+		display: inline-block;
+		margin-bottom: .25rem;
 	}
 
 	input,
