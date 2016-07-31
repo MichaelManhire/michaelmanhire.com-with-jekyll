@@ -584,7 +584,7 @@ main section.interior {
 
 .highlight pre,
 .highlight code {
-	overflow: scroll;
+	overflow: auto;
 }
 
 .c     { color: #998; font-style: italic } // Comment
