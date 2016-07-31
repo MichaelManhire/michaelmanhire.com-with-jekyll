@@ -1,5 +1,7 @@
 # Prevent directory browsing
-Options -Indexes
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
 
 # Map requests without file extensions (like .html) to the proper files
 Options +MultiViews
