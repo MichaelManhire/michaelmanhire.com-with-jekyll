@@ -8,5 +8,7 @@ $subject = "Contact Form Submission on michaelmanhire.com";
 
 $formContent = "Name: $name \r\nEmail: $email \r\nMessage: $message";
 
-mail($recipient, $subject, $formContent);
+if ($email !== "" && $message !== "") {
+	mail($recipient, $subject, $formContent);
+}
 ?>
