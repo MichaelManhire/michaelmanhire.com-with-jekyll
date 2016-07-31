@@ -1,7 +1,7 @@
 # Prevent directory browsing
 Options -Indexes
 
-# Redirect www to non-wwww
+# Redirect www to non-www
 RewriteEngine On
 RewriteCond %{HTTP_HOST}  ^www.michaelmanhire.com [NC]
 RewriteRule ^(.*) http://michaelmanhire.com/$1 [L,R=301]
